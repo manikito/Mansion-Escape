@@ -1,0 +1,1258 @@
+/* =========================================================
+   THE HOLLOW HOUSE
+   ABANDONED GHOST STORY THEME
+   ========================================================= */
+
+
+/* =========================================================
+   COLOUR PALETTE
+   ========================================================= */
+
+:root {
+    --black: #000000;
+    --deep-black: #030303;
+    --charcoal: #0d0d0d;
+    --dark-gray: #191919;
+
+    --gray: #666666;
+    --dust-gray: #929292;
+    --light-gray: #bdbdbd;
+
+    --silver: #c9ced3;
+    --ghost-white: #e8ebed;
+    --white: #ffffff;
+}
+
+
+/* =========================================================
+   PAGE RESET
+   ========================================================= */
+
+* {
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+
+html {
+    scroll-padding-top: 100px;
+}
+
+body {
+    margin: 0;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            rgba(230, 235, 240, 0.05),
+            transparent 25%
+        ),
+
+        radial-gradient(
+            circle at 80% 70%,
+            rgba(180, 185, 190, 0.04),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #000000,
+            #101010,
+            #050505,
+            #151515
+        );
+
+    background-attachment: fixed;
+
+    color: var(--ghost-white);
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    font-size: 18px;
+
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   HORROR HEADING FONT
+   ========================================================= */
+
+h1,
+h2,
+h3,
+.logo,
+nav a,
+.small-warning,
+.scene-number,
+.ending-label,
+.choice-button,
+.main-button {
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        fantasy;
+
+    text-transform: uppercase;
+
+    letter-spacing: 5px;
+}
+
+
+/* =========================================================
+   HEADER
+   ========================================================= */
+
+header {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 1000;
+
+    width: 100%;
+
+    min-height: 95px;
+
+    padding: 20px 7%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    background:
+        linear-gradient(
+            90deg,
+            rgba(0, 0, 0, 0.98),
+            rgba(25, 25, 25, 0.97),
+            rgba(0, 0, 0, 0.98)
+        );
+
+    border-bottom: 1px solid #555555;
+
+    box-shadow:
+        0 8px 35px black,
+        0 0 20px rgba(255, 255, 255, 0.05);
+}
+
+
+/* =========================================================
+   LOGO
+   ========================================================= */
+
+.logo {
+    color: var(--silver);
+
+    font-size: 1.7rem;
+
+    text-shadow:
+        3px 3px 0 #222222,
+        0 0 8px rgba(255, 255, 255, 0.28);
+}
+
+
+/* =========================================================
+   NAVIGATION
+   ========================================================= */
+
+nav {
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    gap: 30px;
+}
+
+nav a {
+    color: #aaaaaa;
+
+    font-size: 0.95rem;
+
+    text-decoration: none;
+
+    transition:
+        color 0.3s,
+        text-shadow 0.3s;
+}
+
+nav a:hover {
+    color: white;
+
+    text-shadow:
+        0 0 8px white,
+        0 0 18px #888888;
+}
+
+
+/* =========================================================
+   HOME PAGE
+   ========================================================= */
+
+.hero {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 120px 8%;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    background:
+
+        /* Silver window light */
+
+        linear-gradient(
+            115deg,
+            transparent 5%,
+            transparent 18%,
+            rgba(225, 230, 235, 0.04) 20%,
+            rgba(225, 230, 235, 0.14) 32%,
+            rgba(225, 230, 235, 0.04) 43%,
+            transparent 50%
+        ),
+
+        /* Faint light in room */
+
+        radial-gradient(
+            ellipse at 30% 30%,
+            rgba(230, 235, 240, 0.10),
+            transparent 28%
+        ),
+
+        /* Dark abandoned room */
+
+        linear-gradient(
+            135deg,
+            #000000,
+            #151515,
+            #070707,
+            #010101
+        );
+}
+
+
+/* =========================================================
+   EXTRA SILVER LIGHT BEAM
+   ========================================================= */
+
+.hero::before {
+    content: "";
+
+    position: absolute;
+
+    width: 450px;
+
+    height: 140%;
+
+    left: -140px;
+
+    top: -20%;
+
+    background:
+        linear-gradient(
+            105deg,
+            transparent,
+            rgba(230, 235, 240, 0.03),
+            rgba(230, 235, 240, 0.14),
+            transparent
+        );
+
+    transform: rotate(-12deg);
+
+    filter: blur(5px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   DARK EDGES
+   ========================================================= */
+
+.hero-dark-overlay {
+    position: absolute;
+
+    inset: 0;
+
+    z-index: 1;
+
+    background:
+        radial-gradient(
+            ellipse at center,
+            transparent 20%,
+            rgba(0, 0, 0, 0.90) 100%
+        );
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   HOME CONTENT
+   ========================================================= */
+
+.hero-content {
+    position: relative;
+
+    z-index: 5;
+
+    width: 100%;
+
+    max-width: 1100px;
+
+    margin: auto;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   MAIN TITLE
+   ========================================================= */
+
+.hero h1 {
+    margin: 20px auto;
+
+    color: #dedede;
+
+    font-size: clamp(4.5rem, 9vw, 8rem);
+
+    line-height: 0.95;
+
+    letter-spacing: 9px;
+
+    text-align: center;
+
+    text-shadow:
+        3px 3px 0 #555555,
+        7px 7px 0 #151515,
+        0 0 10px rgba(255, 255, 255, 0.30),
+        0 0 35px rgba(210, 215, 220, 0.12);
+}
+
+
+.hero h2 {
+    margin: 25px auto 35px;
+
+    color: #8d8d8d;
+
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+
+    letter-spacing: 10px;
+
+    text-align: center;
+}
+
+
+.hero p {
+    max-width: 800px;
+
+    margin: 18px auto;
+
+    color: #b7b7b7;
+
+    font-size: clamp(1.1rem, 2vw, 1.35rem);
+
+    line-height: 1.9;
+
+    text-align: center;
+}
+
+
+.small-warning {
+    color: #989898 !important;
+
+    font-size: 1rem !important;
+
+    letter-spacing: 9px;
+
+    font-weight: bold;
+}
+
+
+/* =========================================================
+   GHOSTS PEEKING FROM SIDES
+   ========================================================= */
+
+.ghost {
+    position: absolute;
+
+    z-index: 3;
+
+    font-size: 105px;
+
+    opacity: 0.08;
+
+    filter:
+        grayscale(1)
+        brightness(1.5)
+        drop-shadow(0 0 10px white);
+
+    animation: ghostPeek 6s ease-in-out infinite;
+}
+
+
+.ghost-one {
+    top: 27%;
+
+    left: -40px;
+}
+
+
+.ghost-two {
+    right: -40px;
+
+    bottom: 20%;
+
+    animation-delay: 2.5s;
+}
+
+
+@keyframes ghostPeek {
+
+    0% {
+        transform: translateX(0);
+
+        opacity: 0.04;
+    }
+
+    50% {
+        transform: translateX(30px);
+
+        opacity: 0.18;
+    }
+
+    100% {
+        transform: translateX(0);
+
+        opacity: 0.04;
+    }
+}
+
+
+/* =========================================================
+   ENTER BUTTON
+   ========================================================= */
+
+.main-button {
+    display: inline-block;
+
+    margin: 40px auto 0;
+
+    padding: 18px 45px;
+
+    color: #d0d0d0;
+
+    background:
+        linear-gradient(
+            135deg,
+            #050505,
+            #252525
+        );
+
+    border: 1px solid #777777;
+
+    text-decoration: none;
+
+    font-size: 1.05rem;
+
+    box-shadow:
+        0 12px 35px black,
+        0 0 15px rgba(255, 255, 255, 0.06);
+
+    transition:
+        transform 0.35s,
+        background 0.35s,
+        color 0.35s,
+        box-shadow 0.35s;
+}
+
+.main-button:hover {
+    color: black;
+
+    background: #d9d9d9;
+
+    transform: translateY(-5px);
+
+    box-shadow:
+        0 0 10px white,
+        0 0 30px rgba(220, 225, 230, 0.28);
+}
+
+
+/* =========================================================
+   STORY SCENES
+   ========================================================= */
+
+.story-scene {
+    position: relative;
+
+    min-height: 100vh;
+
+    width: 100%;
+
+    padding: 120px 8%;
+
+    display: grid;
+
+    grid-template-columns:
+        minmax(350px, 1fr)
+        minmax(350px, 1fr);
+
+    gap: 80px;
+
+    align-items: center;
+
+    overflow: hidden;
+
+    background:
+
+        radial-gradient(
+            ellipse at 20% 20%,
+            rgba(220, 225, 230, 0.07),
+            transparent 25%
+        ),
+
+        linear-gradient(
+            135deg,
+            #010101,
+            #151515,
+            #070707,
+            #010101
+        );
+}
+
+
+/* =========================================================
+   DARKER STORY ROOMS
+   ========================================================= */
+
+.dark-room {
+    background:
+
+        radial-gradient(
+            ellipse at 80% 20%,
+            rgba(225, 230, 235, 0.05),
+            transparent 22%
+        ),
+
+        linear-gradient(
+            140deg,
+            #000000,
+            #080808,
+            #121212,
+            #010101
+        );
+}
+
+
+/* =========================================================
+   SILVER WINDOW LIGHT INSIDE ROOMS
+   ========================================================= */
+
+.story-scene::before {
+    content: "";
+
+    position: absolute;
+
+    z-index: 0;
+
+    width: 450px;
+
+    height: 130%;
+
+    top: -15%;
+
+    left: -130px;
+
+    background:
+        linear-gradient(
+            110deg,
+            transparent,
+            rgba(230, 235, 240, 0.03),
+            rgba(230, 235, 240, 0.12),
+            transparent
+        );
+
+    transform: rotate(-10deg);
+
+    filter: blur(5px);
+
+    pointer-events: none;
+}
+
+
+/* =========================================================
+   ROOM IMAGE
+   ========================================================= */
+
+.scene-picture {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    height: 590px;
+
+    overflow: hidden;
+
+    background: #050505;
+
+    border: 1px solid #555555;
+
+    outline: 8px solid #080808;
+
+    box-shadow:
+        14px 16px 0 black,
+        0 25px 65px black,
+        0 0 18px rgba(255, 255, 255, 0.03);
+}
+
+
+/* =========================================================
+   ABANDONED PHOTOGRAPHS
+   ========================================================= */
+
+.scene-picture img {
+    display: block;
+
+    width: 100%;
+
+    height: 100%;
+
+    object-fit: cover;
+
+    filter:
+        grayscale(1)
+        brightness(0.40)
+        contrast(1.45);
+
+    transition:
+        transform 0.7s,
+        filter 0.7s;
+}
+
+
+/* Dirty dark overlay */
+
+.scene-picture::after {
+    content: "";
+
+    position: absolute;
+
+    inset: 0;
+
+    background:
+
+        linear-gradient(
+            120deg,
+            rgba(255, 255, 255, 0.06),
+            transparent 22%
+        ),
+
+        radial-gradient(
+            ellipse at center,
+            transparent 35%,
+            rgba(0, 0, 0, 0.75)
+        );
+
+    pointer-events: none;
+}
+
+
+.scene-picture:hover img {
+    transform: scale(1.045);
+
+    filter:
+        grayscale(1)
+        brightness(0.56)
+        contrast(1.35);
+}
+
+
+/* =========================================================
+   STORY TEXT
+   ========================================================= */
+
+.scene-content {
+    position: relative;
+
+    z-index: 3;
+
+    width: 100%;
+
+    max-width: 700px;
+
+    margin: auto;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+}
+
+
+.scene-number {
+    margin-bottom: 5px;
+
+    color: #666666;
+
+    font-size: 1rem;
+
+    letter-spacing: 9px;
+}
+
+
+.scene-content h2 {
+    margin: 10px auto 30px;
+
+    color: #dddddd;
+
+    font-size: clamp(3.5rem, 6vw, 5.5rem);
+
+    line-height: 1;
+
+    text-align: center;
+
+    text-shadow:
+        4px 4px 0 #333333,
+        8px 8px 0 #101010,
+        0 0 15px rgba(255, 255, 255, 0.12);
+}
+
+
+.scene-content p {
+    width: 100%;
+
+    max-width: 650px;
+
+    margin: 13px auto;
+
+    color: #adadad;
+
+    font-size: 1.2rem;
+
+    line-height: 1.9;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   TWO STORY CHOICES
+   ========================================================= */
+
+.choice-container {
+    width: 100%;
+
+    max-width: 700px;
+
+    margin: 45px auto 0;
+
+    display: grid;
+
+    grid-template-columns: 1fr 1fr;
+
+    gap: 20px;
+}
+
+
+.choice-button {
+    position: relative;
+
+    overflow: hidden;
+
+    min-height: 85px;
+
+    padding: 20px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    color: #cfcfcf;
+
+    background:
+        linear-gradient(
+            135deg,
+            #050505,
+            #252525
+        );
+
+    border: 1px solid #666666;
+
+    text-decoration: none;
+
+    text-align: center;
+
+    font-size: 1rem;
+
+    line-height: 1.4;
+
+    box-shadow:
+        0 12px 25px black;
+
+    transition:
+        background 0.35s,
+        color 0.35s,
+        transform 0.35s,
+        box-shadow 0.35s;
+}
+
+
+/* Silver shine across choice */
+
+.choice-button::before {
+    content: "";
+
+    position: absolute;
+
+    width: 80px;
+
+    height: 200%;
+
+    top: -50%;
+
+    left: -120px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255, 255, 255, 0.12),
+            transparent
+        );
+
+    transform: rotate(20deg);
+
+    transition: 0.5s;
+}
+
+
+.choice-button:hover {
+    color: #050505;
+
+    background: #dddddd;
+
+    border-color: white;
+
+    transform: translateY(-6px);
+
+    box-shadow:
+        0 15px 30px black,
+        0 0 20px rgba(255, 255, 255, 0.22);
+}
+
+
+.choice-button:hover::before {
+    left: 110%;
+}
+
+
+/* =========================================================
+   ENDING SECTIONS
+   ========================================================= */
+
+.ending {
+    position: relative;
+
+    min-height: 100vh;
+
+    padding: 120px 8%;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    overflow: hidden;
+
+    text-align: center;
+
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(220, 225, 230, 0.08),
+            transparent 30%
+        ),
+
+        linear-gradient(
+            135deg,
+            #010101,
+            #111111,
+            #030303
+        );
+}
+
+
+/* =========================================================
+   ESCAPE ENDING
+   ========================================================= */
+
+.ending-light {
+    background:
+
+        radial-gradient(
+            circle at center,
+            rgba(235, 240, 245, 0.18),
+            transparent 37%
+        ),
+
+        linear-gradient(
+            135deg,
+            #040404,
+            #242424,
+            #070707
+        );
+}
+
+
+/* =========================================================
+   ENDING LABEL
+   ========================================================= */
+
+.ending-label {
+    margin: 0 auto;
+
+    color: #777777;
+
+    font-size: 1rem;
+
+    letter-spacing: 10px;
+}
+
+
+/* =========================================================
+   ENDING TITLE
+   ========================================================= */
+
+.ending h2 {
+    margin: 20px auto 40px;
+
+    color: #e1e1e1;
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        fantasy;
+
+    font-size: clamp(4rem, 9vw, 8rem);
+
+    line-height: 0.95;
+
+    letter-spacing: 8px;
+
+    text-align: center;
+
+    text-shadow:
+        4px 4px 0 #3b3b3b,
+        8px 8px 0 #111111,
+        0 0 20px rgba(255, 255, 255, 0.18);
+}
+
+
+.ending p {
+    max-width: 750px;
+
+    margin: 10px auto;
+
+    color: #b0b0b0;
+
+    font-size: 1.3rem;
+
+    line-height: 1.9;
+
+    text-align: center;
+}
+
+
+/* =========================================================
+   ENDING SYMBOL
+   ========================================================= */
+
+.ending-symbol {
+    margin: 35px auto;
+
+    font-size: 7rem;
+
+    filter:
+        grayscale(1)
+        drop-shadow(0 0 15px rgba(255, 255, 255, 0.3));
+
+    animation: endingFloat 4s ease-in-out infinite;
+}
+
+
+@keyframes endingFloat {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+/* =========================================================
+   PLAY AGAIN BUTTON
+   ========================================================= */
+
+.ending .main-button {
+    margin-top: 25px;
+}
+
+
+/* =========================================================
+   FOOTER
+   ========================================================= */
+
+footer {
+    min-height: 300px;
+
+    padding: 60px 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-align: center;
+
+    background:
+        linear-gradient(
+            #070707,
+            #000000
+        );
+
+    border-top: 1px solid #444444;
+}
+
+
+footer h3 {
+    margin: 0 0 15px;
+
+    color: #cccccc;
+
+    font-family:
+        Impact,
+        Haettenschweiler,
+        "Arial Narrow Bold",
+        fantasy;
+
+    font-size: 2rem;
+
+    letter-spacing: 7px;
+
+    text-shadow:
+        0 0 12px rgba(255, 255, 255, 0.13);
+}
+
+
+footer p {
+    margin: 5px auto;
+
+    color: #707070;
+
+    text-align: center;
+}
+
+
+.footer-message {
+    margin-top: 20px;
+
+    color: #999999;
+
+    font-weight: bold;
+
+    letter-spacing: 7px;
+}
+
+
+/* =========================================================
+   RESPONSIVE DESIGN
+   ========================================================= */
+
+@media (max-width: 900px) {
+
+    header {
+        position: relative;
+
+        flex-direction: column;
+
+        justify-content: center;
+
+        gap: 18px;
+
+        text-align: center;
+    }
+
+
+    nav {
+        flex-wrap: wrap;
+
+        justify-content: center;
+
+        gap: 18px;
+    }
+
+
+    .hero {
+        padding: 90px 7%;
+    }
+
+
+    .hero h1 {
+        font-size: 4rem;
+
+        letter-spacing: 5px;
+    }
+
+
+    .hero h2 {
+        letter-spacing: 5px;
+    }
+
+
+    .ghost {
+        font-size: 65px;
+    }
+
+
+    .story-scene {
+        min-height: 100vh;
+
+        padding: 90px 7%;
+
+        grid-template-columns: 1fr;
+
+        gap: 55px;
+    }
+
+
+    .scene-picture {
+        width: 100%;
+
+        height: 420px;
+    }
+
+
+    .scene-content h2 {
+        font-size: 3.5rem;
+    }
+
+
+    .choice-container {
+        grid-template-columns: 1fr;
+    }
+
+
+    .choice-button {
+        min-height: 75px;
+    }
+
+
+    .ending {
+        padding: 90px 7%;
+    }
+
+
+    .ending h2 {
+        font-size: 4.5rem;
+    }
+
+}
+
+
+/* =========================================================
+   EXTRA SMALL SCREENS
+   ========================================================= */
+
+@media (max-width: 550px) {
+
+    body {
+        font-size: 16px;
+    }
+
+
+    .logo {
+        font-size: 1.25rem;
+    }
+
+
+    nav a {
+        font-size: 0.8rem;
+    }
+
+
+    .hero h1 {
+        font-size: 3rem;
+    }
+
+
+    .hero h2 {
+        font-size: 1.4rem;
+    }
+
+
+    .scene-picture {
+        height: 320px;
+    }
+
+
+    .scene-content h2 {
+        font-size: 2.8rem;
+    }
+
+
+    .scene-content p {
+        font-size: 1.05rem;
+    }
+
+
+    .ending h2 {
+        font-size: 3.5rem;
+    }
+
+
+    .ending-symbol {
+        font-size: 5rem;
+    }
+
+}
