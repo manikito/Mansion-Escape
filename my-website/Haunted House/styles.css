@@ -1,0 +1,870 @@
+/* =========================================
+   RESET
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+
+html {
+    scroll-behavior: smooth;
+}
+
+
+body {
+    min-height: 100vh;
+
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            #333333 0%,
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 80% 70%,
+            #292929 0%,
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #050505,
+            #151515,
+            #050505
+        );
+
+    color: #eeeeee;
+
+    font-family:
+        Georgia,
+        "Times New Roman",
+        serif;
+
+    overflow-x: hidden;
+
+    transition:
+        background 0.4s ease,
+        color 0.4s ease;
+}
+
+
+/* =========================================
+   FOG
+========================================= */
+
+.fog {
+    position: fixed;
+
+    width: 700px;
+    height: 300px;
+
+    border-radius: 50%;
+
+    background:
+        rgba(255, 255, 255, 0.04);
+
+    filter: blur(70px);
+
+    pointer-events: none;
+
+    z-index: 0;
+}
+
+
+.fog-one {
+    top: 5%;
+    left: -200px;
+}
+
+
+.fog-two {
+    bottom: 5%;
+    right: -200px;
+}
+
+
+/* =========================================
+   MAIN MENU
+========================================= */
+
+.menu-page {
+    min-height: 100vh;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-align: center;
+
+    padding: 30px;
+}
+
+
+.menu {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+.ghost {
+    font-size: 75px;
+
+    margin-bottom: 20px;
+
+    filter: grayscale(100%);
+
+    animation:
+        floatingGhost
+        3s
+        infinite
+        ease-in-out;
+}
+
+
+@keyframes floatingGhost {
+
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+
+}
+
+
+.subtitle {
+    color: #888888;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 13px;
+
+    letter-spacing: 5px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 15px;
+
+    text-align: center;
+}
+
+
+.game-title {
+    font-size:
+        clamp(
+            48px,
+            10vw,
+            110px
+        );
+
+    letter-spacing: 10px;
+
+    color: white;
+
+    text-align: center;
+
+    text-shadow:
+        0 0 10px #ffffff,
+        0 0 25px #777777,
+        4px 4px 0 #242424;
+
+    margin-bottom: 25px;
+
+    transition:
+        color 0.4s ease,
+        text-shadow 0.4s ease;
+}
+
+
+.menu-text {
+    color: #888888;
+
+    font-size: 17px;
+
+    margin-bottom: 35px;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   BUTTONS
+========================================= */
+
+.game-button {
+    display: inline-flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 15px 35px;
+
+    background: #101010;
+
+    color: #eeeeee;
+
+    border: 1px solid #555555;
+
+    text-decoration: none;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    letter-spacing: 3px;
+
+    text-transform: uppercase;
+
+    transition: 0.25s ease;
+
+    text-align: center;
+
+    cursor: pointer;
+}
+
+
+.game-button:hover {
+    color: white;
+
+    background: #222222;
+
+    border-color: white;
+
+    transform: translateY(-3px);
+
+    box-shadow:
+        0 10px 25px rgba(0, 0, 0, .8),
+
+        0 0 12px rgba(255, 255, 255, .15);
+}
+
+
+.play-button {
+    min-width: 180px;
+}
+
+
+/* =========================================
+   THEME BUTTON
+========================================= */
+
+.theme-button {
+    display: block;
+
+    margin: 20px auto 0;
+
+    padding: 12px 24px;
+
+    background: transparent;
+
+    color: #cccccc;
+
+    border: 1px solid #555555;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 2px;
+
+    cursor: pointer;
+
+    transition:
+        background 0.3s ease,
+        color 0.3s ease,
+        border-color 0.3s ease;
+}
+
+
+.theme-button:hover {
+    background: #222222;
+
+    color: white;
+
+    border-color: white;
+}
+
+
+/* =========================================
+   STORY PAGE
+========================================= */
+
+.story-page {
+    min-height: 100vh;
+
+    padding: 50px 20px;
+
+    text-align: center;
+}
+
+
+.story-container {
+    position: relative;
+
+    z-index: 2;
+
+    width: 100%;
+
+    max-width: 900px;
+
+    margin: 0 auto;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   STORY HEADER
+========================================= */
+
+.story-header {
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 80px;
+
+    padding-bottom: 18px;
+
+    border-bottom: 1px solid #424242;
+
+    color: #888888;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 3px;
+
+    margin-bottom: 65px;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   LOCATION
+========================================= */
+
+.location {
+    color: #777777;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 12px;
+
+    letter-spacing: 4px;
+
+    text-transform: uppercase;
+
+    margin-bottom: 15px;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   STORY TITLE
+========================================= */
+
+#story-title {
+    color: #ffffff;
+
+    font-size:
+        clamp(
+            38px,
+            7vw,
+            70px
+        );
+
+    letter-spacing: 3px;
+
+    margin-bottom: 30px;
+
+    text-shadow:
+        0 0 15px rgba(255, 255, 255, .2);
+
+    text-align: center;
+}
+
+
+/* =========================================
+   STORY BOX
+========================================= */
+
+.story-box {
+    position: relative;
+
+    padding: 35px;
+
+    background:
+        rgba(15, 15, 15, .82);
+
+    border: 1px solid #343434;
+
+    border-left: 3px solid #cccccc;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, .6);
+
+    margin: 0 auto 35px auto;
+
+    text-align: center;
+}
+
+
+#story-text {
+    font-size: 19px;
+
+    color: #c8c8c8;
+
+    line-height: 1.6;
+
+    text-align: center;
+}
+
+
+#story-text p {
+    margin-bottom: 12px;
+}
+
+
+#story-text p:last-child {
+    margin-bottom: 0;
+}
+
+
+#story-text strong {
+    color: white;
+
+    letter-spacing: 2px;
+}
+
+
+#story-text em {
+    color: white;
+}
+
+
+/* =========================================
+   CHOICES
+========================================= */
+
+.choices {
+    display: grid;
+
+    grid-template-columns:
+        repeat(3, 1fr);
+
+    gap: 15px;
+
+    margin: 0 auto 50px auto;
+
+    width: 100%;
+
+    text-align: center;
+}
+
+
+.choice-button {
+    min-height: 90px;
+
+    padding: 18px;
+
+    background: #101010;
+
+    color: #d0d0d0;
+
+    border: 1px solid #3a3a3a;
+
+    font-family: Arial, sans-serif;
+
+    font-size: 14px;
+
+    cursor: pointer;
+
+    transition: 0.25s ease;
+
+    text-align: center;
+}
+
+
+.choice-button:hover {
+    color: white;
+
+    border-color: #eeeeee;
+
+    background: #1f1f1f;
+
+    transform: translateY(-4px);
+}
+
+
+/* =========================================
+   STORY CONTROLS
+========================================= */
+
+.story-controls {
+    text-align: center;
+
+    margin-top: 25px;
+}
+
+
+/* =========================================
+   ENDING
+========================================= */
+
+.ending {
+    grid-column: 1 / -1;
+
+    padding: 40px;
+
+    text-align: center;
+
+    background:
+        rgba(10, 10, 10, .9);
+
+    border: 1px solid #555555;
+}
+
+
+.ending p {
+    margin-bottom: 25px;
+
+    color: #cccccc;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   BACKGROUND GHOSTS
+========================================= */
+
+.ghost-background {
+    position: fixed;
+
+    inset: 0;
+
+    pointer-events: none;
+
+    overflow: hidden;
+
+    z-index: 0;
+}
+
+
+.ghost-background span {
+    position: absolute;
+
+    color: #ffffff;
+
+    opacity: .025;
+
+    font-size: 100px;
+
+    filter: grayscale(100%);
+
+    animation:
+        ghostFloat
+        12s
+        infinite
+        ease-in-out;
+}
+
+
+.ghost-background span:nth-child(1) {
+    top: 10%;
+    left: 5%;
+}
+
+
+.ghost-background span:nth-child(2) {
+    top: 30%;
+    right: 10%;
+}
+
+
+.ghost-background span:nth-child(3) {
+    bottom: 15%;
+    left: 15%;
+}
+
+
+.ghost-background span:nth-child(4) {
+    bottom: 30%;
+    right: 20%;
+}
+
+
+.ghost-background span:nth-child(5) {
+    top: 55%;
+    left: 45%;
+}
+
+
+@keyframes ghostFloat {
+
+    0% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+    }
+
+    50% {
+        transform:
+            translateY(-30px)
+            rotate(5deg);
+    }
+
+    100% {
+        transform:
+            translateY(0)
+            rotate(0deg);
+    }
+
+}
+
+
+/* =========================================
+   LIGHT MODE
+========================================= */
+
+body.light-mode {
+    background:
+        radial-gradient(
+            circle at 20% 20%,
+            #ffffff 0%,
+            transparent 30%
+        ),
+
+        radial-gradient(
+            circle at 80% 70%,
+            #dddddd 0%,
+            transparent 35%
+        ),
+
+        linear-gradient(
+            135deg,
+            #eeeeee,
+            #ffffff,
+            #dddddd
+        );
+
+    color: #111111;
+}
+
+
+body.light-mode .fog {
+    background:
+        rgba(0, 0, 0, 0.04);
+}
+
+
+body.light-mode .game-title {
+    color: #111111;
+
+    text-shadow:
+        0 0 10px #ffffff,
+        0 0 25px #999999,
+        2px 2px 0 #cccccc;
+}
+
+
+body.light-mode .subtitle {
+    color: #555555;
+}
+
+
+body.light-mode .menu-text {
+    color: #444444;
+}
+
+
+body.light-mode .game-button {
+    background: #ffffff;
+
+    color: #111111;
+
+    border-color: #777777;
+}
+
+
+body.light-mode .game-button:hover {
+    background: #eeeeee;
+
+    color: #000000;
+
+    border-color: #111111;
+}
+
+
+body.light-mode .theme-button {
+    background: #ffffff;
+
+    color: #222222;
+
+    border-color: #777777;
+}
+
+
+body.light-mode .theme-button:hover {
+    background: #eeeeee;
+
+    color: #000000;
+
+    border-color: #222222;
+}
+
+
+body.light-mode .story-header {
+    color: #555555;
+
+    border-color: #aaaaaa;
+}
+
+
+body.light-mode .location {
+    color: #555555;
+}
+
+
+body.light-mode #story-title {
+    color: #111111;
+
+    text-shadow:
+        0 0 10px rgba(0, 0, 0, .15);
+}
+
+
+body.light-mode .story-box {
+    background:
+        rgba(255, 255, 255, .88);
+
+    border-color: #aaaaaa;
+
+    border-left-color: #222222;
+
+    box-shadow:
+        0 20px 60px rgba(0, 0, 0, .15);
+}
+
+
+body.light-mode #story-text {
+    color: #222222;
+}
+
+
+body.light-mode #story-text strong {
+    color: #000000;
+}
+
+
+body.light-mode #story-text em {
+    color: #222222;
+}
+
+
+body.light-mode .choice-button {
+    background: #eeeeee;
+
+    color: #222222;
+
+    border-color: #999999;
+}
+
+
+body.light-mode .choice-button:hover {
+    background: #ffffff;
+
+    color: #000000;
+
+    border-color: #222222;
+}
+
+
+body.light-mode .ending {
+    background:
+        rgba(255, 255, 255, .9);
+
+    border-color: #999999;
+}
+
+
+body.light-mode .ending p {
+    color: #333333;
+}
+
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 700px) {
+
+    .story-page {
+        padding: 30px 15px;
+    }
+
+
+    .story-header {
+        margin-bottom: 40px;
+
+        flex-direction: column;
+
+        gap: 10px;
+    }
+
+
+    .story-box {
+        padding: 25px;
+    }
+
+
+    #story-text {
+        font-size: 17px;
+
+        line-height: 1.6;
+    }
+
+
+    .choices {
+        grid-template-columns: 1fr;
+    }
+
+
+    .game-title {
+        letter-spacing: 5px;
+    }
+
+
+    .ghost {
+        font-size: 60px;
+    }
+
+}
