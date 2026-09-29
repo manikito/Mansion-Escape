@@ -1,0 +1,528 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Mansion Escape</title>
+
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body class="story-page">
+
+    <div class="fog fog-one"></div>
+    <div class="fog fog-two"></div>
+
+    <div class="ghost-background">
+        <span>👻</span>
+        <span>☁</span>
+        <span>👻</span>
+        <span>☁</span>
+        <span>👻</span>
+    </div>
+
+    <main class="story-container">
+
+        <header class="story-header">
+
+            <span>
+                👻 MANSION
+            </span>
+
+            <span id="chapter">
+                CHAPTER 1 / 7
+            </span>
+
+        </header>
+
+
+        <section id="game">
+
+            <p class="location" id="location">
+                UNKNOWN ROOM • 12:00 AM
+            </p>
+
+            <h1 id="story-title">
+                LEAVE NOW OR STAY FOREVER
+            </h1>
+
+
+            <div class="story-box">
+
+                <p id="story-text">
+                    It was 12:00 AM when a storm occurred as you were coming home from work.
+                    The main road was closed because of a large car collision, so you took a detour through the forest.
+                    As you drove through the dark forest, you saw a deer crossing the road, causing you to swerve.
+                    The next thing you knew, you woke up in an old-looking room with no memory of how you got there.
+                    A note was lying on the floor in front of you.
+
+                    <br><br>
+
+                    The note reads:
+
+                    <br><br>
+
+                    <strong>"LEAVE NOW OR STAY FOREVER."</strong>
+                </p>
+
+            </div>
+
+
+            <div class="choices" id="choices">
+
+                <button class="choice-button" onclick="choose('hallway')">
+                    🚪 Enter the dark hallway
+                </button>
+
+                <button class="choice-button" onclick="choose('window')">
+                    🪟 Examine the boarded window
+                </button>
+
+                <button class="choice-button" onclick="choose('stairs')">
+                    🕯 Follow the stairs downstairs
+                </button>
+
+            </div>
+
+        </section>
+
+
+        <div class="story-controls">
+
+            <a href="index.html" class="game-button">
+                ← MAIN MENU
+            </a>
+
+            <button id="theme-toggle" class="theme-button">
+                ☀ LIGHT MODE
+            </button>
+
+        </div>
+
+    </main>
+
+
+    <script>
+        // ========================================
+        // DARK / LIGHT MODE
+        // ========================================
+
+        const savedTheme = localStorage.getItem("mansionTheme");
+
+        if (savedTheme === "light") {
+            document.body.classList.add("light-mode");
+        }
+
+
+        const themeButton = document.getElementById("theme-toggle");
+
+
+        function updateThemeButton() {
+
+            if (document.body.classList.contains("light-mode")) {
+
+                themeButton.textContent = "🌙 DARK MODE";
+
+            } else {
+
+                themeButton.textContent = "☀ LIGHT MODE";
+
+            }
+
+        }
+
+
+        updateThemeButton();
+
+
+        themeButton.addEventListener("click", function () {
+
+            document.body.classList.toggle("light-mode");
+
+
+            if (document.body.classList.contains("light-mode")) {
+
+                localStorage.setItem("mansionTheme", "light");
+
+            } else {
+
+                localStorage.setItem("mansionTheme", "dark");
+
+            }
+
+
+            updateThemeButton();
+
+        });
+
+
+        // ========================================
+        // GAME
+        // ========================================
+
+        let stage = 1;
+
+
+        function updateStory(title, location, text, choices) {
+
+            document.getElementById("story-title").textContent = title;
+
+            document.getElementById("location").textContent = location;
+
+            document.getElementById("story-text").innerHTML = text;
+
+            document.getElementById("chapter").textContent =
+                "CHAPTER " + stage + " / 7";
+
+
+            const choicesContainer =
+                document.getElementById("choices");
+
+
+            choicesContainer.innerHTML = "";
+
+
+            choices.forEach(function(choice) {
+
+                const button =
+                    document.createElement("button");
+
+                button.className = "choice-button";
+
+                button.textContent = choice.text;
+
+                button.onclick = function() {
+                    choose(choice.value);
+                };
+
+                choicesContainer.appendChild(button);
+
+            });
+
+        }
+
+
+        function choose(choice) {
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+
+            stage++;
+
+
+            if (stage === 2) {
+
+                stageTwo(choice);
+
+            }
+
+            else if (stage === 3) {
+
+                stageThree(choice);
+
+            }
+
+            else if (stage === 4) {
+
+                stageFour(choice);
+
+            }
+
+            else if (stage === 5) {
+
+                stageFive(choice);
+
+            }
+
+            else if (stage === 6) {
+
+                stageSix(choice);
+
+            }
+
+            else if (stage === 7) {
+
+                stageSeven(choice);
+
+            }
+
+            else {
+
+                ending(choice);
+
+            }
+
+        }
+
+
+        function stageTwo(choice) {
+
+            if (choice === "hallway") {
+
+                updateStory(
+                    "THE ENDLESS HALLWAY",
+                    "NORTH HALLWAY • 12:15 AM",
+                    "The hallway stretches farther than it should. Every door looks identical.",
+                    [
+                        {
+                            text: "🚪 Enter the bedroom",
+                            value: "bedroom"
+                        },
+                        {
+                            text: "🩸 Follow the scratches",
+                            value: "scratch"
+                        },
+                        {
+                            text: "🕰 Examine the clock",
+                            value: "clock"
+                        }
+                    ]
+                );
+
+            }
+
+            else if (choice === "window") {
+
+                updateStory(
+                    "SOMETHING OUTSIDE",
+                    "BEDROOM • 12:15 AM",
+                    "You look through the boarded window. Something moves between the trees.",
+                    [
+                        {
+                            text: "🪵 Remove a board",
+                            value: "board"
+                        },
+                        {
+                            text: "🪢 Search for a rope",
+                            value: "rope"
+                        },
+                        {
+                            text: "🕳 Examine the vent",
+                            value: "vent"
+                        }
+                    ]
+                );
+
+            }
+
+            else {
+
+                updateStory(
+                    "BELOW THE HOUSE",
+                    "BASEMENT STAIRS • 12:15 AM",
+                    "The stairs lead into complete darkness. You hear something moving below.",
+                    [
+                        {
+                            text: "🔥 Investigate the furnace",
+                            value: "furnace"
+                        },
+                        {
+                            text: "📦 Search the storage room",
+                            value: "storage"
+                        },
+                        {
+                            text: "🔩 Examine the metal door",
+                            value: "metal"
+                        }
+                    ]
+                );
+
+            }
+
+        }
+
+
+        function stageThree(choice) {
+
+            updateStory(
+                "A STRANGE DISCOVERY",
+                "LOWER HALLWAY • 12:30 AM",
+                "Your investigation reveals that the mansion has been abandoned for decades. Yet something inside is still watching you.",
+                [
+                    {
+                        text: "🔍 Search for clues",
+                        value: "clues"
+                    },
+                    {
+                        text: "🪧 Examine the strange signs",
+                        value: "signs"
+                    },
+                    {
+                        text: "🚶 Keep moving",
+                        value: "move"
+                    }
+                ]
+            );
+
+        }
+
+
+        function stageFour(choice) {
+
+            updateStory(
+                "THE ABANDONED STUDY",
+                "STUDY • 12:45 AM",
+                "An abandoned study contains three possible paths. Each seems to lead deeper into the mansion.",
+                [
+                    {
+                        text: "🏚 Go toward the attic",
+                        value: "attic"
+                    },
+                    {
+                        text: "🪞 Examine the mirror",
+                        value: "mirror"
+                    },
+                    {
+                        text: "🚪 Enter the cellar",
+                        value: "cellar"
+                    }
+                ]
+            );
+
+        }
+
+
+        function stageFive(choice) {
+
+            updateStory(
+                "THE HIDDEN ROOM",
+                "SECRET ROOM • 1:00 AM",
+                "You discover a hidden room beneath the mansion. Something has been waiting here for you.",
+                [
+                    {
+                        text: "🔑 Search for a key",
+                        value: "key"
+                    },
+                    {
+                        text: "📜 Search for information",
+                        value: "information"
+                    },
+                    {
+                        text: "🕳 Find another passage",
+                        value: "passage"
+                    }
+                ]
+            );
+
+        }
+
+
+        function stageSix(choice) {
+
+            updateStory(
+                "THE FINAL CHAMBER",
+                "HIDDEN CHAMBER • 1:15 AM",
+                "Three objects sit on a stone table. One may help you escape. Another may bring something far worse.",
+                [
+                    {
+                        text: "🔑 Take the old house key",
+                        value: "key"
+                    },
+                    {
+                        text: "🗺 Take the torn map",
+                        value: "map"
+                    },
+                    {
+                        text: "📜 Take the mysterious note",
+                        value: "note"
+                    }
+                ]
+            );
+
+        }
+
+
+        function stageSeven(choice) {
+
+            updateStory(
+                "THE FINAL DOOR",
+                "MAIN HALL • 1:30 AM",
+                "You reach the final door. The mansion becomes strangely silent. You must decide how to escape.",
+                [
+                    {
+                        text: "🚪 Open the front door",
+                        value: "frontdoor"
+                    },
+                    {
+                        text: "🕳 Enter the hidden exit",
+                        value: "exitdoor"
+                    },
+                    {
+                        text: "🪟 Escape through the window",
+                        value: "windowEscape"
+                    }
+                ]
+            );
+
+        }
+
+
+        function ending(choice) {
+
+            const endings = {
+
+                frontdoor: {
+                    title: "THE OPEN DOOR",
+                    text: "You push the front door open and step outside. The mansion disappears behind you. You are free, but you can still hear whispers following you through the darkness."
+                },
+
+                exitdoor: {
+                    title: "THE OTHER SIDE",
+                    text: "You enter the hidden exit. Instead of reaching the outside world, you step into another dimension. The door disappears behind you, leaving you trapped somewhere beyond the mansion."
+                },
+
+                windowEscape: {
+                    title: "THE FOREST",
+                    text: "You climb through the window and run into the forest. After hours of walking, you finally escape the property. But something follows you home."
+                }
+
+            };
+
+
+            const endingData =
+                endings[choice] || endings.frontdoor;
+
+
+            document.getElementById("story-title").textContent =
+                endingData.title;
+
+
+            document.getElementById("location").textContent =
+                "THE END";
+
+
+            document.getElementById("story-text").innerHTML =
+                "<p>" + endingData.text + "</p>";
+
+
+            document.getElementById("chapter").textContent =
+                "ENDING";
+
+
+            document.getElementById("choices").innerHTML = `
+
+                <div class="ending">
+
+                    <p>
+                        The story has ended.
+                    </p>
+
+                    <a href="index.html" class="game-button">
+                        PLAY AGAIN?
+                    </a>
+
+                </div>
+
+            `;
+
+        }
+
+    </script>
+
+</body>
+</html>
